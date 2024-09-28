@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/LogoutDialog.dart';
 import 'package:project/MyAccountDosen.dart';
 
 
@@ -16,13 +17,13 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Profile UI',
       theme: ThemeData(
       ),
-      home: const MyProfilePage(),
+      home: const ProfileDosen(),
     );
   }
 }
 
-class MyProfilePage extends StatelessWidget {
-  const MyProfilePage({super.key});
+class ProfileDosen extends StatelessWidget {
+  const ProfileDosen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,42 +45,62 @@ class MyProfilePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const SizedBox(height: 20),
+          const SizedBox(height: 50),
           Center(
             child: CircleAvatar(
               radius: 60,
               backgroundImage: AssetImage('assets/Profile-dosen.jpg'),
             ),
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 50),
           Card(
             color: Colors.white,
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Container(
+            height: 60,
+            child: Center(
             child: ListTile(
               title: const Text('My account',
-              style: TextStyle(color: Color.fromARGB(255, 55, 94, 151))
+              style: TextStyle(
+                  fontFamily: 'Poppins', // Menggunakan font Poppins yang sudah di-embed
+                  fontSize: 18,
+                  color: Color.fromARGB(255, 55, 94, 151),
+                ),
               ),
               trailing: const Icon(Icons.arrow_forward_ios, color: Color.fromARGB(255, 55, 94, 151),),
               onTap: () {
+              // Aksi untuk "My account"
               Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const Myaccountdosen()),
               );
-                // Aksi untuk "My account"
+                
               },
+            ),
+            ),
             ),
           ),
           Card(
             color: Colors.white,
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Container(
+            height: 60,
+            child: Center(
             child: ListTile(
               title: const Text('Logout', 
-              style: TextStyle(color: Color.fromARGB(255, 55, 94, 151))),
+              style: TextStyle(
+                  fontFamily: 'Poppins', // Menggunakan font Poppins yang sudah di-embed
+                  fontSize: 18,
+                  color: Color.fromARGB(255, 55, 94, 151),
+                ),
+              ),
               trailing: const Icon(Icons.arrow_forward_ios, color: Color.fromARGB(255, 55, 94, 151),),
               onTap: () {
-                // Aksi untuk "Logout"
-                
+              // Aksi untuk "Logout"
+              LogoutDialog.showLogoutDialog(context);
               },
+            ),
+            ),
             ),
           ),
         ],
